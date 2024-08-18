@@ -185,9 +185,8 @@ class Timer extends Placeable {
 
   updateContacts() {
     //TODO: insert timer functionality
-    let contacts;
-    const on = [true, false, false, true, false];
-    const off = [false, true, true, false, true];
+    const on = [true, false, false, true, false, true];
+    const off = [false, true, true, false, true, false];
     if (!this.timerCoil.getState() && !this.timerEnable.getState())
       this.tick = 0;
     if (
@@ -199,12 +198,12 @@ class Timer extends Placeable {
     if (this.tick == 200) {
       const contacts = on;
       for (let i = 2; i < this.contacts.length; i++) {
-        this.contacts[i].setContact(contacts[i - 1]);
+        this.contacts[i].setContact(contacts[i - 2]);
       }
     } else {
       const contacts = off;
       for (let i = 2; i < this.contacts.length; i++) {
-        this.contacts[i].setContact(contacts[i - 1]);
+        this.contacts[i].setContact(contacts[i - 2]);
       }
     }
     this.drawTimingDisplay();
