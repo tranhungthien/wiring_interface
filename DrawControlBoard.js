@@ -26,10 +26,6 @@ function drawControlBoard() {
     relay.display();
   }
 
-  for (let timer of timers) {
-    timer.display();
-  }
-
   for (let lamp of greenLamps) {
     lamp.display();
   }
@@ -50,6 +46,10 @@ function drawControlBoard() {
     wire.display();
   }
 
+  for (let timer of timers) {
+    timer.display();
+  }
+  
   let x = relativeCoordinates().x;
   let y = relativeCoordinates().y;
 
