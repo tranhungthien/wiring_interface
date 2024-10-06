@@ -36,26 +36,53 @@
 let state = "SELECT";
 let message = "Main";
 let done = true;
+var dotGrid;
 
 function setup() {
-  let canvas = createCanvas(windowWidth, windowHeight);
-  initZoom();
-  initSources();
-  dropDown(canvas);
+
+    let canvas = createCanvas(windowWidth, windowHeight);
+
+    setupGrid();
+
+    initZoom();
+    initSources();
+    dropDown(canvas);
+
+}
+
+function setupGrid() {
+
+    dotGrid = createGraphics(windowWidth, windowHeight);
+
+    dotGrid.clear();
+
+    dotGrid.stroke("black");
+    dotGrid.fill(255, 0, 0);
+    for (let x = 0; x <= gridSizeX; x += spacing) {
+        for (let y = 0; y <= gridSizeY; y += spacing) {
+
+            dotGrid.point(x, y);
+
+        }
+    }
+
 }
 
 function draw() {
-  //In ZoomAndPan.js
-  translate(offset.x, offset.y);
-  scale(scaling);
 
-  drawGrid();
-  drawControlBoard();
+    //In ZoomAndPan.js
+    translate(offset.x, offset.y);
+    scale(scaling);
 
-  // need to draw first
-  controller();
-  panWithKeys();
-  pan();
+
+    background(220);
+    image(dotGrid, 0, 0);
+    drawControlBoard();
+
+    // need to draw first
+    controller();
+    panWithKeys();
+    pan();
 }
 
 function windowResized() { 
